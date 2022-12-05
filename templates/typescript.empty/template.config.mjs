@@ -1,6 +1,11 @@
 import * as path from "node:path";
 import * as fs from "node:fs";
 
+const GITIGNORE = `/dist
+/node_modules
+**.swp
+`;
+
 export async function generate(rootDir, cli) {
     const name = await cli.prompt("Package name", {
         check: name => (name.length <= 214 && name.match(/^([^\._@]|@[a-z0-9\-_\.\~]+\/)[a-z0-9\-_\.\~\/]+$/)),
@@ -30,6 +35,10 @@ export async function generate(rootDir, cli) {
     const packageInfo = {
         name, version,
         main: "dist/index.js",
+        files: [
+            "/dist/**/*.js",
+            "/dist/**/*.d.ts"
+        ],
         scripts: {
             "test": "node dist/test.js",
             "build": "tsc -b",
@@ -71,6 +80,11 @@ export async function generate(rootDir, cli) {
     
     await Promise.all([
         fs.promises.writeFile(path.join(rootDir, "package.json"), JSON.stringify(packageInfo, null, 2)),
-        fs.promises.writeFile(path.join(rootDir, "tsconfig.json"), JSON.stringify(tsconfig, null, 4))
+        fs.promises.writeFile(path.join(rootDir, "tsconfig.json"), JSON.stringify(tsconfig, null, 4)),
+        fs.promises.writeFile(path.join(rootDir, ".gitignore"), GITIGNORE)
     ]);
+
+    cli.info("You're all set! Some notes:");
+    cli.info("- Include files by adding pattern to 'files' array in package.json");
+    cli.info("- Build your project with 'npm run build'");
 }
