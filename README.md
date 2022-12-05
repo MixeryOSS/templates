@@ -3,6 +3,13 @@ _Quickly create new project with just a single command_
 
 Templates provides with ``typescript.empty`` by default. Use that to quickly create new empty TypeScript project.
 
+## Installing Templates
+Install Templates by using ``npm``:
+
+```console
+$ npm i -g @mixery/templates
+```
+
 ## Usage
 > Run ``mixery-templates`` without arguments to view the message below.
 
