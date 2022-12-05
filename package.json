@@ -1,9 +1,17 @@
 {
   "name": "@mixery/templates",
   "version": "1.0.0",
-  "description": "Quickly create new project",
+  "description": "Quickly create new project with just a single command",
   "type": "module",
   "main": "dist/index.js",
+  "files": [
+      "/dist/**/*.js",
+      "/dist/**/*.d.ts",
+      "/templates"
+  ],
+  "bin": {
+      "mixery-templates": "./dist/bin.js"
+  },
   "scripts": {
     "test": "node dist/test.js"
   },
