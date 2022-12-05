@@ -1,0 +1,27 @@
+{
+  "name": "@mixery/templates",
+  "version": "1.0.0",
+  "description": "Quickly create new project",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "node dist/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MixeryOSS/templates.git"
+  },
+  "keywords": [
+    "templates",
+    "cli"
+  ],
+  "author": "nahkd123",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/MixeryOSS/templates/issues"
+  },
+  "homepage": "https://github.com/MixeryOSS/templates#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.10"
+  }
+}

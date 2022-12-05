@@ -1,0 +1,7 @@
+/.github
+/src
+/tsconfig.json
+/dist/test*.*
+/dist/tsconfig.tsbuildinfo
+**.swp
+
