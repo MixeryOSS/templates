@@ -1,0 +1,29 @@
+run-name: '${{ github.actor }}: Push'
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install TypeScript compiler and other packages
+        run: |
+          npm install -g typescript
+          npm install
+      - name: Compile TypeScript files
+        run: tsc -b
+      - name: Pack as tgz
+        run: npm pack
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: packages
+          path: '*.tgz'
